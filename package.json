@@ -1,0 +1,20 @@
+{
+  "name": "Idle_Project",
+  "version": "0.1.0",
+  "description": "Web Dev Final Project",
+  "main": "src/index.js",
+  "repository": "https://github.com/Eli-Labell/Idle_Project.git",
+  "author": "Kevin, Shawn, Eli, and Donovan",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  }
+}
