@@ -27,7 +27,7 @@ function tick() {
 
 function showGameState() {
 	document.getElementById('score').innerHTML= `<span><h3>Rolls of toilet paper:</h3><h2>${gameState.toiletPaper}</h2></span>`
-    document.getElementById('getTP').addEventListener("click", function () {
+    document.getElementById('ball').addEventListener("click", function () {
         gameState.toiletPaper += 10
     });
 }
