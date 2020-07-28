@@ -80,7 +80,7 @@ function buyableTemplate(key, buyable) {
 }
 
 function showGameState() {
-	document.getElementById('score').innerHTML = `<span><h3>Rolls of toilet paper:</h3><h2>${gameState.toiletPaper}</h2></span>`
+	document.getElementById('score').innerText = `${gameState.toiletPaper}`
 }
 
 function populateInventory() {

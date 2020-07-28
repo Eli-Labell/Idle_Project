@@ -10,15 +10,18 @@
 <script src="src/game.js"></script> <!--- index.js loaded --->
 <div id="top">
     <div class="column" id="itemShelf">
-        <p>item shelf</p>
+        <span class="col-header">Item Shelf</span>
 
     </div>
     <div class="column" id="covidBall">
-        <div id="score"></div>
+        <div class="col-header" style="display: flex; flex-direction: column">
+            <img src="../img/sprites/toilet-paper.png" style="width: 15%; align-self: center"><span id="score"
+                                                                                                    style="align-self: center"></span>
+        </div>
         <img id="ball" src="img/CovidVirus2Darker.png"/>
     </div>
     <div class="column" id="shop">
-        <p>shop</p>
+        <span class="col-header">Shop</span>
         <div id="inventory">
         </div>
     </div>
@@ -26,7 +29,7 @@
 
 </div>
 <div id="questions">
-    <p>questions</p>
+    <span class="col-header">Questions</span>
 </div>
 </body>
 </html>
