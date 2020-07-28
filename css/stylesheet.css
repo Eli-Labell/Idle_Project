@@ -1,3 +1,16 @@
+html {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-image: url(../img/coronavirus.jpg);
+    background-size: cover;
+
+}
+
 #itemShelf {
     grid-row: 1;
     grid-column: 1;
@@ -12,50 +25,26 @@
     border-color: white;
 }
 
-#shop {
-    grid-row: 1;
-    grid-column: 3;
-    border-style: solid;
-    border-color: white;
-}
-
 #ball {
-    background-image: url(../img/CovidVirus2Darker.png);
-    background-size:cover;
-    height: 80%;
-    width: 63%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-body {
-    background-image: url(../img/coronavirus.jpg);
-    background-size: cover;
+    width: 100%;
+    /*display: flex;*/
 }
 
 #questions {
-    grid-row: 2;
-    grid-column: 1/3;
     border-style: solid;
     border-color: white;
-    height: 650px;
-    margin: 10px;
+    margin-bottom: 5px;
 }
 
 #top {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
+    /*grid-template-columns: repeat(3, 1fr);*/
+    margin-bottom: 5px;
     grid-gap: 10px;
-    height: 1000px;
 }
 
-#inventory {
-    display: grid;
-    grid-template-columns: auto;
-    grid-gap: 1px;
-    height: 90%;
-}
+
 
 .button {
     font: 500;
@@ -66,28 +55,55 @@ body {
 }
 
 .buy {
-    display:inline-block;
-    display:inline;
-    align-self:center;
+    display: inline-block;
+    display: inline;
+    align-self: center;
+}
+
+#top .column {
+    width: 33.3%;
+    margin-right: 5px;
+}
+
+#shop {
+    /*grid-row: 1;*/
+    /*grid-column: 3;*/
+    border-style: solid;
+    border-color: white;
+
+}
+
+#inventory {
+    display: flex;
+    flex-direction: column;
 }
 
 .buyable {
-    height: 25%;
-    min-height: 120px;
-    margin: 10px;
+    max-height: 120px;
+    margin: 0px 10px 5px 10px;
     border-style: solid;
     border-color: white;
+    display: flex;
+    flex: 1;
+    flex-basis: 0;
+}
+
+.buyable-stats {
+    align-self: center;
+    list-style: none;
+    margin: 0px;
 }
 
 .pic {
-    margin: 10px;
-    max-height: 120px;
-    max-width: 120px;
+    /*margin: 10px;*/
+    max-height: 100px;
+    max-width: 100px;
+    height: auto;
 }
 
 p {
-    font: 500;
-    font-size: xx-large;
+    /*font: 500;*/
+    /*font-size: xx-large;*/
     font-stretch: ultra-expanded;
     align-self: center;
     color: white;

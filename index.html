@@ -1,53 +1,32 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <title>Corona Clicker</title>
-    <script src="https://unpkg.com/lodash@4.16.6"></script>
     <link rel="stylesheet" href="css/stylesheet.css"/>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 </head>
 <body>
-<div id="gameCanvas"></div>
-<script src="src/index.js"></script> <!--- index.js loaded --->
 <script src="src/game.js"></script> <!--- index.js loaded --->
-    <div id="top">
-        <div id="itemShelf">
-            <p>item shelf</p>
-            <br />
+<div id="top">
+    <div class="column" id="itemShelf">
+        <p>item shelf</p>
 
-        </div>
-        <div id="covidBall">
-            <div id="score"></div>
-            <div id="ball"></div>
-        </div>
-        <div id="shop">
-            <p>shop</p>
-            <br />
-            <div id="inventory">
-                <div id="mask" class="buyable">
-                    <img id="maskImg" class="buy pic" src="../img/coronavirus.jpg"/>
-                    <p class="buy">Buy a Mask to protect yourself and those around you</p>
-                    <button id="maskButon" class="buy button">BUY</button>
-                </div>
-                <div id="sanitizer" class="buyable">
-                    <img id="sanitizerImg" class="buy pic" src="../img/coronavirus.jpg" />
-                    <p class="buy">Buy hand sanitizer to keep your hands clean of germs</p>
-                    <button id="maskButon" class="buy button">BUY</button>
-                </div>
-                <div id="soap" class="buyable">
-                    <img id="soapImg" class="buy pic" src="../img/coronavirus.jpg" />
-                    <p class="buy">Buy soap to wash your hands to stop the transmission of disease</p>
-                    <button id="maskButon" class="buy button">BUY</button>
-                </div>
-                <div id="vaccine" class="buyable">
-                    <img id="vaccineImg" class="buy pic" src="../img/coronavirus.jpg" />
-                    <p class="buy">Buy a vaccine to give yourself immunity to infection</p>
-                    <button id="maskButon" class="buy button">BUY</button>
-                </div>
-            </div>
+    </div>
+    <div class="column" id="covidBall">
+        <div id="score"></div>
+        <img id="ball" src="img/CovidVirus2Darker.png"/>
+    </div>
+    <div class="column" id="shop">
+        <p>shop</p>
+        <div id="inventory">
         </div>
     </div>
-    <div id="questions">
-        <p>questions</p>
-    </div>
+</div>
+
+</div>
+<div id="questions">
+    <p>questions</p>
+</div>
 </body>
 </html>
