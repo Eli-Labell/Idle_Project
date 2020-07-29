@@ -1,66 +1,83 @@
 const TICK_ROLLOVER = 1000000 // Number of ticks before it rolls back to 0
 let gameState
-
+const gameStateVersion = "1.0"
 function initGameState() {
 	gameState = {
+		version: gameStateVersion,
 		toiletPaper: 0,
 		tick: 0,
-		incomeUpgrades: {
+		incomeUpgrades: { //Stores data about all items that can be purchased. You can buy as many of an item as you want
 			socialDistancing: {
 				quantity: 1,
 				cost: 10,
 				income: 1,
+				multiplier: 1,
 				friendlyName: "Social Distancing"
 			},
 			mask: {
 				quantity: 0,
 				cost: 50,
 				income: 5,
+				multiplier: 1,
 				friendlyName: "Mask"
 			},
 			handSanitizer: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Hand Sanitizer"
 			},
 			education: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Education"
 			},
 			handWashing: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Hand Washing"
 			},
 			wipes: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Wipes"
 			},
 			vaccine: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Vaccine"
 			},
 			testing: {
 				quantity: 0,
 				cost: 500,
 				income: 10,
+				multiplier: 1,
 				friendlyName: "Testing"
 			}
+		},
+		multiplierUpgrades: { // Stores data about all multiplier upgrades that can be purchased. You can buy each upgrade once
+
 		}
 	}
 }
 
+function setMultiplier(key, multiplier) {
+	gameState.incomeUpgrades[key].multiplier = multiplier
+}
+
 function tick() {
 	for (let key of Object.keys(gameState.incomeUpgrades)) {
-		gameState.toiletPaper += gameState.incomeUpgrades[key].quantity * gameState.incomeUpgrades[key].income;
+		console.log(gameState.incomeUpgrades[key]?.multiplier)
+		gameState.toiletPaper += gameState.incomeUpgrades[key]?.quantity * gameState.incomeUpgrades[key]?.income * gameState.incomeUpgrades[key]?.multiplier;
 	}
 	gameState.tick++
 	if (gameState.tick % 10 == 0) {
@@ -143,7 +160,7 @@ function storeGameState() {
 
 function retrieveGameState() {
 	gameState = JSON.parse(localStorage.getItem("gameState"))
-	if (gameState == null) {
+	if (gameState == null || gameState.version != gameStateVersion) {
 		console.log("No gameState in local storage, initializing")
 		initGameState()
 	}
