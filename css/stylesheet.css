@@ -89,6 +89,8 @@ body {
     display: flex;
     flex: 1;
     flex-basis: 0;
+    font-size: xx-large;
+    color: white;
 }
 
 .buyable-stats {
@@ -116,4 +118,8 @@ p {
     font-size: xx-large;
     text-align: center;
     background-color: #ffffff75;
+}
+
+.grey {
+    filter: grayscale(100%);
 }
