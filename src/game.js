@@ -1,55 +1,59 @@
 const TICK_ROLLOVER = 1000000 // Number of ticks before it rolls back to 0
-var gameState = {
-	toiletPaper: 0,
-	tick: 0,
-	incomeUpgrades: {
-		socialDistancing: {
-			quantity: 1,
-			cost: 10,
-			income: 1,
-			friendlyName: "Social Distancing"
-		},
-		mask: {
-			quantity: 0,
-			cost: 50,
-			income: 5,
-			friendlyName: "Mask"
-		},
-		handSanitizer: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Hand Sanitizer"
-		},
-		education: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Education"
-		},
-		handWashing: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Hand Washing"
-		},
-		wipes: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Wipes"
-		},
-		vaccine: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Vaccine"
-		},
-		testing: {
-			quantity: 0,
-			cost: 500,
-			income: 10,
-			friendlyName: "Testing"
+let gameState
+
+function initGameState() {
+	gameState = {
+		toiletPaper: 0,
+		tick: 0,
+		incomeUpgrades: {
+			socialDistancing: {
+				quantity: 1,
+				cost: 10,
+				income: 1,
+				friendlyName: "Social Distancing"
+			},
+			mask: {
+				quantity: 0,
+				cost: 50,
+				income: 5,
+				friendlyName: "Mask"
+			},
+			handSanitizer: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Hand Sanitizer"
+			},
+			education: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Education"
+			},
+			handWashing: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Hand Washing"
+			},
+			wipes: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Wipes"
+			},
+			vaccine: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Vaccine"
+			},
+			testing: {
+				quantity: 0,
+				cost: 500,
+				income: 10,
+				friendlyName: "Testing"
+			}
 		}
 	}
 }
@@ -121,9 +125,27 @@ function updateInventory() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+	retrieveGameState()
 	document.getElementById('ball').addEventListener("click", function () {
 		gameState.toiletPaper += 10
 	});
 	populateInventory()
 	setInterval(tick, 200);
 }, false);
+
+window.onbeforeunload = function () {
+	storeGameState()
+}
+
+function storeGameState() {
+	localStorage.setItem("gameState", JSON.stringify(gameState))
+}
+
+function retrieveGameState() {
+	gameState = JSON.parse(localStorage.getItem("gameState"))
+	if (gameState == null) {
+		console.log("No gameState in local storage, initializing")
+		initGameState()
+	}
+	console.log(gameState)
+}
