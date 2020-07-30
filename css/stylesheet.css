@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 html {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+    font-family: 'Righteous', Arial, san-serif;
+    font-size: 18px;
 }
 
 body {
@@ -34,6 +38,7 @@ body {
     border-style: solid;
     border-color: white;
     margin-bottom: 5px;
+    font-size: 12px;
 }
 
 #top {
@@ -68,6 +73,10 @@ body {
     flex-direction: column;
 }
 
+#score {
+    font-size: smaller;
+}
+
 #shop {
     /*grid-row: 1;*/
     /*grid-column: 3;*/
@@ -81,6 +90,11 @@ body {
     flex-direction: column;
 }
 
+#fact {
+    font-size: 20px;
+    text-shadow: 2px 2px 0px #31393C;
+}
+
 .buyable {
     max-height: 120px;
     margin: 0px 10px 5px 10px;
@@ -89,8 +103,9 @@ body {
     display: flex;
     flex: 1;
     flex-basis: 0;
-    font-size: xx-large;
-    color: white;
+    font-size: 18px;
+    color: #F3FCF0;
+    text-shadow: 2px 2px 0px #31393C;
 }
 
 .buyable-stats {
@@ -101,8 +116,7 @@ body {
 
 .pic {
     /*margin: 10px;*/
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 67px;
     height: auto;
 }
 
@@ -115,7 +129,9 @@ p {
 }
 
 .col-header {
-    font-size: xx-large;
+    font-size: 40px;
+    color: #F3FCF0;
+    text-shadow: 3px 3px 0px #EA3546;
     text-align: center;
     background-color: #ffffff75;
 }

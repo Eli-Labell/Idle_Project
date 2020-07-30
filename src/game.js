@@ -117,13 +117,25 @@ function initGameState() {
 	}
 }
 
+const facts = [
+	"Fever, dry cough, and tiredness are all common symptoms of COVID-19.",
+	'"COVID-19 is mainly spread through close contact from person-to-person." - FDA.gov',
+	'"CDC recommends washing your hands often with soap and water for at least 20 seconds especially after you have been in a public place, or after blowing your nose, coughing, or sneezing. If soap and water are not available, CDC recommends using an alcohol-based hand sanitizer that contains at least 60 percent alcohol." - FDA.gov',
+	'"CDC recommends wearing cloth face coverings in public when other social distancing measures are difficult to maintain (e.g., grocery stores and pharmacies) especially in areas of significant community-based transmission of the coronavirus. The purpose of wearing cloth face coverings in public is to slow the spread of the virus and help people who may have the virus and do not know it from transmitting it to others." - FDA.gov',
+	'"Smoking cigarettes can leave you more vulnerable to respiratory illnesses, such as COVID-19. For example, smoking is known to cause lung disease and people with underlying lung problems may have increased risk for serious complications from COVID-19, a disease that primarily attacks the lungs. Smoking cigarettes can also cause inflammation and cell damage throughout the body, and can weaken your immune system, making it less able to fight off disease." - FDA.gov',
+	'"At this time there is no vaccine to prevent coronavirus disease 2019 (COVID-19). The FDA is working with vaccine developers and other researchers and manufacturers to help expedite the development and availability of medical products such as vaccines, antibodies, and drugs to prevent COVID-19." - FDA.gov',
+	'"Currently there are no FDA-approved medicines specifically approved for the treatment or prevention of COVID-19." - FDA.gov',
+	'"[When testing for COVID-19], samples are collected from a person’s nose and/or throat using swabs or other collection devices by a healthcare provider in a health care setting." - FDA.gov'
+]
+
+let currentFact = -1;
+
 function setMultiplier(key, multiplier) {
 	gameState.incomeUpgrades[key].multiplier = multiplier
 }
 
 function tick() {
 	for (let key of Object.keys(gameState.incomeUpgrades)) {
-        console.log(gameState.incomeUpgrades[key] ?.multiplier)
         if (gameState.multiplierUpgrades[key + "Upgrade"].purchased === 1) {
             gameState.toiletPaper += gameState.incomeUpgrades[key] ?.quantity * gameState.incomeUpgrades[key] ?.income * gameState.incomeUpgrades[key] ?.multiplier * gameState.multiplierUpgrades[key+"Upgrade"] ?.multiplier;
         } else {
@@ -131,9 +143,7 @@ function tick() {
         }
 	}
 	gameState.tick++
-	if (gameState.tick % 10 == 0) {
-		// gameState.incomeUpgrades.handSanitizer.quantity++;
-	}
+
 	showGameState();
 	//console.log("tick");
 	if (gameState.tick == TICK_ROLLOVER) {
@@ -162,6 +172,15 @@ function upgradableTemplate(key, upgradable) {
 
 function showGameState() {
 	document.getElementById('score').innerText = `${gameState.toiletPaper}`
+}
+
+function showNextFact() {
+	currentFact++;
+	if(currentFact == facts.length) {
+		currentFact = 0;
+	}
+
+	factDiv = document.getElementById("fact").innerText = facts[currentFact];
 }
 
 function populateInventory() {
@@ -254,6 +273,8 @@ document.addEventListener('DOMContentLoaded', function () {
     populateInventory()
     populateItemShelf()
 	setInterval(tick, 200);
+    showNextFact();
+    setInterval(showNextFact, 20000);
 }, false);
 
 window.onbeforeunload = function () {
