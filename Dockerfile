@@ -9,4 +9,4 @@ COPY . .
 
 RUN yarn
 STOPSIGNAL SIGTERM
-ENTRYPOINT ["yarn", "start", "--host","0.0.0.0"]
+ENTRYPOINT ["yarn", "start", "--host","0.0.0.0", "--disable-host-check"]
